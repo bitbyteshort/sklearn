@@ -10,8 +10,9 @@ from boto.s3.connection import S3Connection
 input_file = '/tmp/xxx'
 #input_file = sys.argv[1] if (len(sys.argv) >= 2) else '/Users/terryz/Workspace/python/python3/data/census-adult-train.csv'
 
-#conn = S3Connection('AKIAI5RUMG5HPH4PRWHA', 'PYtKExzP6ofNf4FNhPFLRRPvBYIJxxqQmBYIl2Tk')
-conn = S3Connection(sys.argv[1], sys.argv[2])
+access_key = sys.argv[1]
+secret_key = sys.argv[2]
+conn = S3Connection(access_key, secret_key)
 bucket = conn.get_bucket('eml-datasets')
 key = bucket.get_key('terryz/census-adult-train.csv')
 key.get_contents_to_filename(input_file)
